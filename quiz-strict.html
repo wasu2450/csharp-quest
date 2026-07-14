@@ -221,7 +221,7 @@ const QUESTIONS = [
   {stage:5, type:'fill', text:'เติมสัญลักษณ์ที่ต้องใส่หน้าข้อความเพื่อใช้ string interpolation:', code:'string name = "Ann";\nConsole.WriteLine(___"Hello {name}");', accept:['$']},
   {stage:5, type:'mc', text:'\\n ในสตริงหมายถึงอะไร?', options:['เว้นวรรค','แท็บ','เครื่องหมายคำพูด','ขึ้นบรรทัดใหม่'], answer:'ขึ้นบรรทัดใหม่'},
   {stage:5, type:'mc', text:'ข้อใดใช้หาความยาว (จำนวนตัวอักษร) ของสตริง?', options:['.Length','.Count()','.Size','.Len()'], answer:'.Length'},
-  {stage:5, type:'fill', text:'เติม escape character ที่ใช้แสดงเครื่องหมายคำพูด (") ภายในสตริง:', code:'"She said \\___Hi\\___"', accept:['"','\\"']},
+  {stage:5, type:'fill', text:'หากต้องการแสดงคำว่า She said "Hi" ต้องใส่ Special Characters อะไรในช่องที่เว้นไว้', code:'"She said __Hi__"', accept:['\\"']},
 
   // ด่านที่ 6: Boolean & If-Else
   {stage:6, type:'mc', text:'ชนิดข้อมูล bool มีค่าที่เป็นไปได้กี่ค่า?', options:['1','2','3','ไม่จำกัด'], answer:'2'},
