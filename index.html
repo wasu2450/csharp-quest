@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C# Quest: เลือกภารกิจ</title>
+<style>
+  :root{
+    --bg-deep:#070B1A;
+    --bg-panel:#0F1730;
+    --line:#1E2A4A;
+    --star:#8FA8FF;
+    --accent:#5EE0C1;
+    --accent2:#B98CFF;
+    --warn:#FF6B6B;
+    --text:#E8ECFF;
+    --text-dim:#8C97C2;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:radial-gradient(ellipse at top, #101B3D 0%, var(--bg-deep) 60%);
+    color:var(--text);
+    font-family: 'Segoe UI', 'Sarabun', 'Trebuchet MS', sans-serif;
+    min-height:100vh;
+    position:relative;
+    overflow-x:hidden;
+  }
+  #stars{position:fixed;inset:0;z-index:0;pointer-events:none;}
+  .star{position:absolute;background:var(--star);border-radius:50%;opacity:.6;animation:twinkle 3s infinite ease-in-out;}
+  @keyframes twinkle{0%,100%{opacity:.2;}50%{opacity:.9;}}
+  @media (prefers-reduced-motion: reduce){ .star{animation:none;} }
+
+  .wrap{position:relative;z-index:1;max-width:640px;margin:0 auto;padding:40px 18px 60px;}
+
+  .title{
+    font-size:1.7rem;font-weight:800;letter-spacing:.3px;text-align:center;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    margin:0 0 6px;
+  }
+  .subtitle{color:var(--text-dim);font-size:.92rem;margin:0 0 32px;text-align:center;}
+
+  .card{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:22px;
+    box-shadow:0 20px 40px -20px rgba(0,0,0,.6);
+    margin-bottom:18px;
+    display:block;
+    text-decoration:none;
+    color:var(--text);
+    transition:border-color .15s ease, transform .12s ease;
+  }
+  .card:hover{border-color:var(--accent2);transform:translateY(-2px);}
+  .card:active{transform:scale(.99);}
+
+  .badge{
+    display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.5px;
+    text-transform:uppercase;padding:4px 10px;border-radius:999px;margin-bottom:10px;
+  }
+  .badge.strict{background:#2A1414;color:var(--warn);}
+  .badge.flexible{background:#0E2A28;color:var(--accent);}
+
+  .card-title{font-size:1.15rem;font-weight:700;margin:0 0 6px;display:flex;align-items:center;gap:8px;}
+  .card-desc{font-size:.9rem;color:var(--text-dim);line-height:1.5;margin:0 0 10px;}
+  .card-meta{font-size:.8rem;color:var(--text-dim);}
+  .card-cta{font-size:.88rem;font-weight:700;color:var(--accent2);margin-top:10px;}
+
+  .footer-note{font-size:.75rem;color:var(--text-dim);text-align:center;margin-top:24px;}
+</style>
+</head>
+<body>
+<div id="stars"></div>
+<div class="wrap">
+
+  <div class="title">🚀 C# QUEST</div>
+  <div class="subtitle">เลือกภารกิจที่ต้องการทดสอบ — ครอบคลุม 6 ด่าน: Syntax · ตัวแปร/ชนิดข้อมูล · รับค่าจากผู้ใช้ · Operators · String · Boolean/If-Else</div>
+
+  <a class="card" href="quiz-strict.html">
+    <span class="badge strict">แบบเลือกตอบ + พิมพ์คำตอบ</span>
+    <p class="card-title">🔴 Mixed Mode</p>
+    <p class="card-desc">มีทั้งข้อแบบเลือกตอบ (choice) และข้อแบบพิมพ์คำตอบ ตรวจคำตอบแบบพิมพ์ใหญ่-เล็กมีผล (case-sensitive) เช่นต้องพิมพ์ <code>Console</code> หรือ <code>ReadLine</code> ให้ตรงตัวพิมพ์เป๊ะๆ</p>
+    <p class="card-meta">30 ข้อ · 6 ด่าน</p>
+    <p class="card-cta">เริ่มภารกิจ Mixed →</p>
+  </a>
+
+  <a class="card" href="quiz-flexible.html">
+    <span class="badge flexible">พิมพ์คำตอบล้วน</span>
+    <p class="card-title">🟢 Typing Mode</p>
+    <p class="card-desc">ทุกข้อต้องพิมพ์คำตอบเองทั้งหมด ไม่มีตัวเลือกให้กด ตรวจคำตอบแบบพิมพ์ใหญ่-เล็กมีผล (case-sensitive) เหมาะสำหรับฝึกพิมพ์โค้ดและคำสั่งให้แม่นยำแบบภาษา C# จริง</p>
+    <p class="card-meta">30 ข้อ · 6 ด่าน</p>
+    <p class="card-cta">เริ่มภารกิจ Typing →</p>
+  </a>
+
+  <p class="footer-note">คะแนนของทั้งสองภารกิจจะถูกบันทึกลง Google Sheets ชุดเดียวกัน</p>
+</div>
+
+<script>
+const starsEl = document.getElementById('stars');
+for(let i=0;i<70;i++){
+  const s = document.createElement('div');
+  s.className='star';
+  const size = Math.random()*2+1;
+  s.style.width=size+'px'; s.style.height=size+'px';
+  s.style.left=Math.random()*100+'%'; s.style.top=Math.random()*100+'%';
+  s.style.animationDelay=(Math.random()*3)+'s';
+  starsEl.appendChild(s);
+}
+</script>
+</body>
+</html>

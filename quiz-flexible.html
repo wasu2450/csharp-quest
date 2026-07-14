@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C# Quest: ภารกิจ Syntax สู่ If-Else (โหมดพิมพ์คำตอบล้วน)</title>
+<style>
+  :root{
+    --bg-deep:#070B1A;
+    --bg-panel:#0F1730;
+    --line:#1E2A4A;
+    --star:#8FA8FF;
+    --accent:#5EE0C1;
+    --accent2:#B98CFF;
+    --warn:#FF6B6B;
+    --text:#E8ECFF;
+    --text-dim:#8C97C2;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:radial-gradient(ellipse at top, #101B3D 0%, var(--bg-deep) 60%);
+    color:var(--text);
+    font-family: 'Segoe UI', 'Sarabun', 'Trebuchet MS', sans-serif;
+    min-height:100vh;
+    position:relative;
+    overflow-x:hidden;
+  }
+  #stars{position:fixed;inset:0;z-index:0;pointer-events:none;}
+  .star{position:absolute;background:var(--star);border-radius:50%;opacity:.6;animation:twinkle 3s infinite ease-in-out;}
+  @keyframes twinkle{0%,100%{opacity:.2;}50%{opacity:.9;}}
+  @media (prefers-reduced-motion: reduce){ .star{animation:none;} }
+
+  .wrap{position:relative;z-index:1;max-width:640px;margin:0 auto;padding:28px 18px 60px;}
+
+  .title{
+    font-size:1.5rem;font-weight:800;letter-spacing:.3px;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    margin:0 0 4px;
+  }
+  .subtitle{color:var(--text-dim);font-size:.92rem;margin:0 0 22px;}
+
+  .card{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:22px;
+    box-shadow:0 20px 40px -20px rgba(0,0,0,.6);
+  }
+
+  label{display:block;font-size:.85rem;color:var(--text-dim);margin-bottom:6px;}
+  input[type=text]{
+    width:100%;padding:12px 14px;border-radius:10px;
+    border:1px solid var(--line);background:#0A1230;color:var(--text);
+    font-size:1rem;margin-bottom:16px;outline:none;
+  }
+  input[type=text]:focus{border-color:var(--accent);}
+
+  button{
+    appearance:none;border:none;cursor:pointer;
+    font-size:1rem;font-weight:700;border-radius:10px;
+    padding:13px 18px;width:100%;
+    background:linear-gradient(90deg,var(--accent),#3FC7A6);
+    color:#04211C;transition:transform .12s ease, box-shadow .12s ease;
+  }
+  button:active{transform:scale(.98);}
+  button.secondary{
+    background:transparent;border:1px solid var(--line);color:var(--text);
+    margin-top:10px;
+  }
+  button:disabled{opacity:.4;cursor:not-allowed;}
+
+  /* mission progress */
+  .track{position:relative;height:6px;background:var(--line);border-radius:6px;margin:6px 0 26px;}
+  .track-fill{position:absolute;left:0;top:0;height:100%;border-radius:6px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .4s ease;}
+  .rocket{position:absolute;top:-11px;transform:translateX(-50%);font-size:20px;transition:left .4s ease;}
+  .stage-label{display:flex;justify-content:space-between;font-size:.78rem;color:var(--text-dim);margin-bottom:2px;}
+
+  .qmeta{font-size:.75rem;color:var(--accent2);letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px;}
+  .qtext{font-size:1.08rem;line-height:1.5;margin:0 0 6px;}
+  .qcode{
+    background:#060B1E;border:1px solid var(--line);border-radius:10px;
+    padding:12px 14px;font-family:'Consolas','Courier New',monospace;
+    font-size:.92rem;color:#9FE7D9;margin:10px 0 16px;white-space:pre-wrap;
+  }
+
+  .opt{
+    display:block;width:100%;text-align:left;
+    background:#0A1230;border:1px solid var(--line);color:var(--text);
+    padding:12px 14px;border-radius:10px;margin-bottom:10px;
+    font-size:.96rem;cursor:pointer;transition:border-color .15s ease, background .15s ease;
+  }
+  .opt:hover{border-color:var(--accent2);}
+  .opt.selected{border-color:var(--accent);background:#0E2A28;}
+  .opt.correct{border-color:var(--accent);background:#0E2A28;}
+  .opt.wrong{border-color:var(--warn);background:#2A1414;}
+
+  .feedback{font-size:.9rem;margin:6px 0 14px;min-height:20px;}
+  .feedback.ok{color:var(--accent);}
+  .feedback.no{color:var(--warn);}
+
+  .result-score{font-size:2.6rem;font-weight:800;text-align:center;margin:6px 0 2px;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .result-sub{text-align:center;color:var(--text-dim);margin-bottom:20px;}
+
+  .breakdown{max-height:280px;overflow-y:auto;margin-top:10px;padding-right:4px;}
+  .brow{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:.85rem;}
+  .brow span.no{color:var(--text-dim);}
+  .brow .ok{color:var(--accent);}
+  .brow .no2{color:var(--warn);}
+
+  .hidden{display:none;}
+  .footer-note{font-size:.75rem;color:var(--text-dim);text-align:center;margin-top:16px;}
+</style>
+</head>
+<body>
+<div id="stars"></div>
+<div class="wrap">
+
+  <div class="title">🚀 C# QUEST</div>
+  <div class="subtitle">โหมดพิมพ์คำตอบล้วน (Typing) — ทุกข้อพิมพ์คำตอบเอง, ตัวพิมพ์เล็ก-ใหญ่มีผล — 30 ข้อ</div>
+  <a href="index.html" style="display:inline-block;color:var(--text-dim);font-size:.8rem;text-decoration:none;margin:-10px 0 16px;">← กลับหน้าเลือกด่าน</a>
+
+  <!-- START SCREEN -->
+  <div class="card" id="screen-start">
+    <label for="sid">เลขที่</label>
+    <input type="text" id="sid" placeholder="เช่น 12" inputmode="numeric">
+    <label for="sname">ชื่อ-นามสกุล</label>
+    <input type="text" id="sname" placeholder="เช่น ด.ช. สมชาย ใจดี">
+    <button id="btn-start">เริ่มภารกิจ 🚀</button>
+    <p class="footer-note">ครอบคลุม 6 ด่าน: Syntax · ตัวแปร/ชนิดข้อมูล · รับค่าจากผู้ใช้ · Operators · String · Boolean/If-Else</p>
+  </div>
+
+  <!-- QUIZ SCREEN -->
+  <div class="card hidden" id="screen-quiz">
+    <div class="stage-label">
+      <span id="stage-name">ด่านที่ 1</span>
+      <span id="q-count">ข้อ 1 / 30</span>
+    </div>
+    <div class="track">
+      <div class="track-fill" id="track-fill"></div>
+      <div class="rocket" id="rocket" style="left:0%">🚀</div>
+    </div>
+
+    <div class="qmeta" id="q-type"></div>
+    <p class="qtext" id="q-text"></p>
+    <div class="qcode hidden" id="q-code"></div>
+
+    <div id="q-options"></div>
+    <input type="text" class="hidden" id="q-fill" placeholder="พิมพ์คำตอบที่นี่">
+
+    <div class="feedback" id="q-feedback"></div>
+    <button id="btn-check">ตรวจคำตอบ</button>
+    <button class="secondary hidden" id="btn-next">ข้อถัดไป →</button>
+  </div>
+
+  <!-- RESULT SCREEN -->
+  <div class="card hidden" id="screen-result">
+    <p class="result-sub" id="result-name"></p>
+    <div class="result-score" id="result-score"></div>
+    <p class="result-sub" id="result-msg"></p>
+    <button id="btn-review">ดูเฉลยรายข้อ</button>
+    <div class="breakdown hidden" id="breakdown"></div>
+    <p class="footer-note" id="submit-status">กำลังส่งคะแนนไปยัง Google Sheets...</p>
+  </div>
+
+</div>
+
+<script>
+/* ============ CONFIG ============ */
+/* วางลิงก์ Google Apps Script Web App ที่นี่ (ดูวิธีสร้างจากคำแนะนำที่ครูได้รับ) */
+const SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbyU51OM9dPdK0MDwXhdfEDoRzZmwnXOwfHTutFMsGqopYl6OZieFtlJAGutbMRYzqPgYg/exec";
+
+/* ============ BACKGROUND STARS ============ */
+const starsEl = document.getElementById('stars');
+for(let i=0;i<70;i++){
+  const s = document.createElement('div');
+  s.className='star';
+  const size = Math.random()*2+1;
+  s.style.width=size+'px'; s.style.height=size+'px';
+  s.style.left=Math.random()*100+'%'; s.style.top=Math.random()*100+'%';
+  s.style.animationDelay=(Math.random()*3)+'s';
+  starsEl.appendChild(s);
+}
+
+/* ============ QUESTION BANK ============ */
+// type: 'mc' (multiple choice) or 'fill' (พิมพ์คำตอบ)
+// accept: array of acceptable answers (exact case, trimmed) for 'fill' — comparison is case-sensitive
+const QUESTIONS = [
+  // ด่านที่ 1: Syntax & Comments
+  {stage:1, type:'fill', text:'เติมชื่อเมธอดที่โปรแกรม C# เริ่มทำงานเป็นอันดับแรก:', code:'static void ___() { ... }', accept:['Main']},
+  {stage:1, type:'fill', text:'เติมเครื่องหมายที่ต้องใช้ปิดท้ายทุกคำสั่งใน C#:', code:'Console.WriteLine("Hi")___', accept:[';']},
+  {stage:1, type:'fill', text:'เติมสัญลักษณ์ที่ใช้ทำคอมเมนต์บรรทัดเดียว (single-line comment) ใน C#:', code:'___ this is a comment', accept:['//']},
+  {stage:1, type:'fill', text:'C# เป็นภาษาที่ตัวพิมพ์เล็ก-ใหญ่มีผลต่อโค้ดหรือไม่ (case-sensitive)? ตอบว่า "มีผล" หรือ "ไม่มีผล":', accept:['มีผล']},
+  {stage:1, type:'fill', text:'เติมคำสั่งให้ถูกต้อง เพื่อพิมพ์ข้อความออกทางหน้าจอ:', code:'_____.WriteLine("Hello World");', accept:['Console']},
+
+  // ด่านที่ 2: Variables & Data Types
+  {stage:2, type:'fill', text:'เติมชนิดข้อมูลที่ใช้เก็บเลขจำนวนเต็ม:', code:'___ score = 10;', accept:['int']},
+  {stage:2, type:'fill', text:'เติมชนิดข้อมูลที่ใช้เก็บค่า true หรือ false:', code:'___ isReady = true;', accept:['bool']},
+  {stage:2, type:'fill', text:'เติมคำสั่งประกาศตัวแปรชนิดจำนวนเต็ม:', code:'___ age = 20;', accept:['int']},
+  {stage:2, type:'fill', text:'เติมคำสั่งประกาศ "ค่าคงที่" ที่ห้ามเปลี่ยนแปลงค่าในภายหลัง:', code:'___ int MAX = 100;', accept:['const']},
+  {stage:2, type:'fill', text:'เติมคำสั่งที่ใช้แปลงข้อมูลชนิด string ให้เป็น int:', code:'int n = ___("123");', accept:['Convert.ToInt32']},
+
+  // ด่านที่ 3: User Input
+  {stage:3, type:'fill', text:'เติมเมธอดที่ใช้รับค่าที่ผู้ใช้พิมพ์จากคีย์บอร์ด:', code:'string s = Console.___();', accept:['ReadLine']},
+  {stage:3, type:'fill', text:'เติมโค้ดให้รับชื่อจากผู้ใช้:', code:'string name = Console.___();', accept:['ReadLine']},
+  {stage:3, type:'fill', text:'Console.ReadLine() จะคืนค่าเป็นชนิดข้อมูลใดเสมอ:', accept:['string']},
+  {stage:3, type:'fill', text:'เติมโค้ดให้แปลงค่าที่รับมาเป็นตัวเลขจำนวนเต็ม:', code:'int num = Convert.ToInt32(Console.___());', accept:['ReadLine']},
+  {stage:3, type:'fill', text:'ต้องใช้ Convert.ToInt32() ร่วมกับ Console.ReadLine() เพราะ ReadLine() คืนค่าเป็นชนิดข้อมูลใดเสมอ (ไม่ใช่ตัวเลขโดยตรง):', accept:['string']},
+
+  // ด่านที่ 4: Operators
+  {stage:4, type:'fill', text:'เติมตัวดำเนินการที่ใช้หาเศษที่เหลือจากการหาร (modulus):', code:'int r = 10 ___ 3;', accept:['%']},
+  {stage:4, type:'fill', text:'เติมผลลัพธ์ของโค้ดนี้:', code:'10 % 3 = ___', accept:['1']},
+  {stage:4, type:'fill', text:'เติมตัวดำเนินการเปรียบเทียบ "เท่ากับ" ใน C#:', code:'if (a ___ b) { ... }', accept:['==']},
+  {stage:4, type:'fill', text:'เติมตัวดำเนินการที่แทนความหมาย "และ" (AND) แบบตรรกะ:', code:'if (a > 0 ___ b > 0) { ... }', accept:['&&']},
+  {stage:4, type:'fill', text:'เติมผลลัพธ์ (true/false) ของเงื่อนไขนี้:', code:'7 > 5 && 3 > 5', accept:['false']},
+
+  // ด่านที่ 5: Strings
+  {stage:5, type:'fill', text:'เติมเครื่องหมายที่ใช้เชื่อมสตริงสองตัวเข้าด้วยกัน (concatenation):', code:'string full = first ___ last;', accept:['+']},
+  {stage:5, type:'fill', text:'เติมสัญลักษณ์ที่ต้องใส่หน้าข้อความเพื่อใช้ string interpolation:', code:'string name = "Ann";\nConsole.WriteLine(___"Hello {name}");', accept:['$']},
+  {stage:5, type:'fill', text:'\\n ในสตริงหมายถึงอะไร? (ตอบเป็นคำ เช่น "ขึ้นบรรทัดใหม่"):', accept:['ขึ้นบรรทัดใหม่']},
+  {stage:5, type:'fill', text:'เติมคำสั่งที่ใช้หาความยาว (จำนวนตัวอักษร) ของสตริง:', code:'int len = myText.___;', accept:['Length']},
+  {stage:5, type:'fill', text:'เติม escape character ที่ใช้แสดงเครื่องหมายคำพูด (") ภายในสตริง:', code:'"She said \\___Hi\\___"', accept:['"','\\"']},
+
+  // ด่านที่ 6: Boolean & If-Else
+  {stage:6, type:'fill', text:'ชนิดข้อมูล bool มีค่าที่เป็นไปได้กี่ค่า? (ตอบเป็นตัวเลข):', accept:['2']},
+  {stage:6, type:'fill', text:'เติมคำสั่งให้โครงสร้างเงื่อนไขนี้สมบูรณ์:', code:'if (x > 0) { ... }\n___ (x < 0) { ... }\nelse { ... }', accept:['else if']},
+  {stage:6, type:'fill', text:'เติมคำตอบ: คำสั่ง else จะทำงานเมื่อเงื่อนไขก่อนหน้า ___ (ตอบว่า "จริง" หรือ "เท็จ"):', accept:['เท็จ']},
+  {stage:6, type:'fill', text:'เติมสัญลักษณ์ของ Ternary Operator:', code:'string result = (score >= 50) ___ "Pass" : "Fail";', accept:['?']},
+  {stage:6, type:'fill', text:'เติมผลลัพธ์ที่โค้ดนี้จะพิมพ์ออกมา:', code:'int x = 5;\nif (x > 10) Console.WriteLine("A");\nelse if (x > 3) Console.WriteLine("B");\nelse Console.WriteLine("C");', accept:['B']},
+];
+
+const STAGE_NAMES = {
+  1:'ด่านที่ 1: Syntax & Comments',
+  2:'ด่านที่ 2: ตัวแปร/ชนิดข้อมูล',
+  3:'ด่านที่ 3: รับค่าจากผู้ใช้',
+  4:'ด่านที่ 4: Operators',
+  5:'ด่านที่ 5: String',
+  6:'ด่านที่ 6: Boolean & If-Else',
+};
+
+/* ============ STATE ============ */
+let current = 0;
+let score = 0;
+let answered = false;
+let studentId = '', studentName = '';
+const log = []; // {q, given, correct, isRight}
+
+/* ============ ELEMENTS ============ */
+const screenStart = document.getElementById('screen-start');
+const screenQuiz = document.getElementById('screen-quiz');
+const screenResult = document.getElementById('screen-result');
+
+document.getElementById('btn-start').addEventListener('click', () => {
+  studentId = document.getElementById('sid').value.trim();
+  studentName = document.getElementById('sname').value.trim();
+  if(!studentId || !studentName){
+    alert('กรุณากรอกเลขที่และชื่อ-นามสกุลให้ครบก่อนเริ่มภารกิจ');
+    return;
+  }
+  screenStart.classList.add('hidden');
+  screenQuiz.classList.remove('hidden');
+  renderQuestion();
+});
+
+function renderQuestion(){
+  answered = false;
+  const q = QUESTIONS[current];
+  document.getElementById('stage-name').textContent = STAGE_NAMES[q.stage];
+  document.getElementById('q-count').textContent = `ข้อ ${current+1} / ${QUESTIONS.length}`;
+  document.getElementById('q-type').textContent = q.type === 'mc' ? 'เลือกคำตอบที่ถูกต้อง' : 'พิมพ์คำตอบ';
+  document.getElementById('q-text').textContent = q.text;
+
+  const codeEl = document.getElementById('q-code');
+  if(q.code){ codeEl.textContent = q.code; codeEl.classList.remove('hidden'); }
+  else { codeEl.classList.add('hidden'); }
+
+  const pct = (current / QUESTIONS.length) * 100;
+  document.getElementById('track-fill').style.width = pct + '%';
+  document.getElementById('rocket').style.left = pct + '%';
+
+  const feedback = document.getElementById('q-feedback');
+  feedback.textContent = '';
+  feedback.className = 'feedback';
+
+  const btnCheck = document.getElementById('btn-check');
+  const btnNext = document.getElementById('btn-next');
+  btnCheck.classList.remove('hidden');
+  btnNext.classList.add('hidden');
+  btnCheck.disabled = false;
+
+  const optWrap = document.getElementById('q-options');
+  const fillInput = document.getElementById('q-fill');
+  optWrap.innerHTML = '';
+
+  if(q.type === 'mc'){
+    fillInput.classList.add('hidden');
+    optWrap.classList.remove('hidden');
+    q.options.forEach(opt => {
+      const b = document.createElement('button');
+      b.className = 'opt';
+      b.type = 'button';
+      b.textContent = opt;
+      b.addEventListener('click', () => {
+        if(answered) return;
+        [...optWrap.children].forEach(c => c.classList.remove('selected'));
+        b.classList.add('selected');
+        b.dataset.chosen = 'true';
+      });
+      optWrap.appendChild(b);
+    });
+  } else {
+    optWrap.classList.add('hidden');
+    fillInput.classList.remove('hidden');
+    fillInput.value = '';
+  }
+}
+
+document.getElementById('btn-check').addEventListener('click', () => {
+  if(answered) return;
+  const q = QUESTIONS[current];
+  const feedback = document.getElementById('q-feedback');
+  let isRight = false;
+  let given = '';
+
+  if(q.type === 'mc'){
+    const chosen = document.querySelector('#q-options .opt.selected');
+    if(!chosen){ alert('กรุณาเลือกคำตอบก่อนตรวจ'); return; }
+    given = chosen.textContent;
+    isRight = given === q.answer;
+    [...document.querySelectorAll('#q-options .opt')].forEach(b => {
+      if(b.textContent === q.answer) b.classList.add('correct');
+      else if(b === chosen && !isRight) b.classList.add('wrong');
+    });
+  } else {
+    const val = document.getElementById('q-fill').value.trim();
+    given = val;
+    isRight = q.accept.includes(val);
+  }
+
+  answered = true;
+  if(isRight){
+    score++;
+    feedback.textContent = '✅ ถูกต้อง!';
+    feedback.className = 'feedback ok';
+  } else {
+    const correctText = q.type === 'mc' ? q.answer : q.accept[0];
+    feedback.textContent = `❌ ยังไม่ถูก — เฉลย: ${correctText}`;
+    feedback.className = 'feedback no';
+  }
+
+  log.push({text:q.text, given: given || '(ไม่ตอบ)', correct: q.type==='mc' ? q.answer : q.accept[0], isRight});
+
+  document.getElementById('btn-check').classList.add('hidden');
+  document.getElementById('btn-next').classList.remove('hidden');
+});
+
+document.getElementById('btn-next').addEventListener('click', () => {
+  current++;
+  if(current >= QUESTIONS.length){
+    showResult();
+  } else {
+    renderQuestion();
+  }
+});
+
+function showResult(){
+  screenQuiz.classList.add('hidden');
+  screenResult.classList.remove('hidden');
+  document.getElementById('result-name').textContent = `เลขที่ ${studentId} — ${studentName}`;
+  document.getElementById('result-score').textContent = `${score} / ${QUESTIONS.length}`;
+  const pct = Math.round((score/QUESTIONS.length)*100);
+  let msg = '';
+  if(pct >= 80) msg = '🌟 ยอดเยี่ยม! ผ่านภารกิจระดับนักบินอวกาศ';
+  else if(pct >= 60) msg = '👍 ดีมาก ใกล้จะเชี่ยวชาญแล้ว';
+  else msg = '💪 ลองทบทวนอีกครั้ง แล้วมาลุยใหม่นะ';
+  document.getElementById('result-msg').textContent = `${pct}% — ${msg}`;
+
+  submitToSheet();
+}
+
+document.getElementById('btn-review').addEventListener('click', () => {
+  const el = document.getElementById('breakdown');
+  el.classList.toggle('hidden');
+  if(el.children.length === 0){
+    log.forEach((item, i) => {
+      const row = document.createElement('div');
+      row.className = 'brow';
+      row.innerHTML = `<span class="no">${i+1}. ${item.text}</span><span class="${item.isRight?'ok':'no2'}">${item.isRight ? '✔ '+item.given : '✘ '+item.given+' (เฉลย: '+item.correct+')'}</span>`;
+      el.appendChild(row);
+    });
+  }
+});
+
+function submitToSheet(){
+  const statusEl = document.getElementById('submit-status');
+  if(!SHEET_ENDPOINT || SHEET_ENDPOINT.includes('PASTE_YOUR')){
+    statusEl.textContent = '⚠️ ยังไม่ได้ตั้งค่า Google Sheets endpoint (แจ้งครูผู้สอน)';
+    return;
+  }
+  const percent = Math.round((score/QUESTIONS.length)*100);
+  const params = new URLSearchParams({
+    studentId, studentName,
+    score: String(score),
+    total: String(QUESTIONS.length),
+    percent: String(percent),
+    quizMode: 'typing',
+    timestamp: new Date().toISOString()
+  });
+  // ใช้ GET แทน POST เพราะ Apps Script exec URL จะ redirect (302) เสมอ
+  // และ fetch โหมด no-cors จะทำให้ POST body หายไปตอน redirect (เปลี่ยนเป็น GET กลางทาง โดยไม่มี error)
+  // ส่งเป็น GET ตั้งแต่ต้นจึงเชื่อถือได้กว่า
+  fetch(`${SHEET_ENDPOINT}?${params.toString()}`, {
+    method: 'GET',
+    mode: 'no-cors'
+  }).then(() => {
+    statusEl.textContent = '✅ บันทึกคะแนนลง Google Sheets เรียบร้อยแล้ว';
+  }).catch(() => {
+    statusEl.textContent = '⚠️ ส่งคะแนนไม่สำเร็จ กรุณาแจ้งครูผู้สอน';
+  });
+}
+</script>
+</body>
+</html>
