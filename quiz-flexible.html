@@ -192,29 +192,29 @@ const QUESTIONS = [
   {stage:1, type:'fill', text:'เติมชื่อเมธอดที่โปรแกรม C# เริ่มทำงานเป็นอันดับแรก:', code:'static void ___() { ... }', accept:['Main']},
   {stage:1, type:'fill', text:'เติมเครื่องหมายที่ต้องใช้ปิดท้ายทุกคำสั่งใน C#:', code:'Console.WriteLine("Hi")___', accept:[';']},
   {stage:1, type:'fill', text:'เติมสัญลักษณ์ที่ใช้ทำคอมเมนต์บรรทัดเดียว (single-line comment) ใน C#:', code:'___ this is a comment', accept:['//']},
-  {stage:1, type:'fill', text:'C# เป็นภาษาที่ตัวพิมพ์เล็ก-ใหญ่มีผลต่อโค้ดหรือไม่ (case-sensitive)? ตอบว่า "มีผล" หรือ "ไม่มีผล":', accept:['มีผล']},
+  {stage:1, type:'fill', text:'C# เป็นภาษาที่ตัวพิมพ์เล็ก-ใหญ่มีผลต่อโค้ด เรียกว่าอะไร?', accept:['case-sensitive']},
   {stage:1, type:'fill', text:'เติมคำสั่งให้ถูกต้อง เพื่อพิมพ์ข้อความออกทางหน้าจอ:', code:'_____.WriteLine("Hello World");', accept:['Console']},
 
   // ด่านที่ 2: Variables & Data Types
-  {stage:2, type:'fill', text:'เติมชนิดข้อมูลที่ใช้เก็บเลขจำนวนเต็ม:', code:'___ score = 10;', accept:['int']},
-  {stage:2, type:'fill', text:'เติมชนิดข้อมูลที่ใช้เก็บค่า true หรือ false:', code:'___ isReady = true;', accept:['bool']},
-  {stage:2, type:'fill', text:'เติมคำสั่งประกาศตัวแปรชนิดจำนวนเต็ม:', code:'___ age = 20;', accept:['int']},
+  {stage:2, type:'fill', text:'เติมคำสั่งประกาศตัวแปร:', code:'___ score = 10;', accept:['int']},
+  {stage:2, type:'fill', text:'เติมคำสั่งประกาศตัวแปร:', code:'___ isReady = true;', accept:['bool']},
+  {stage:2, type:'fill', text:'เติมคำสั่งประกาศตัวแปร:', code:'___ age = 20.5;', accept:['double']},
   {stage:2, type:'fill', text:'เติมคำสั่งประกาศ "ค่าคงที่" ที่ห้ามเปลี่ยนแปลงค่าในภายหลัง:', code:'___ int MAX = 100;', accept:['const']},
-  {stage:2, type:'fill', text:'เติมคำสั่งที่ใช้แปลงข้อมูลชนิด string ให้เป็น int:', code:'int n = ___("123");', accept:['Convert.ToInt32']},
+  {stage:2, type:'fill', text:'เติมคำสั่งประกาศตัวแปร:', code:'___ myText = "Hello";', accept:['string']},
 
   // ด่านที่ 3: User Input
   {stage:3, type:'fill', text:'เติมเมธอดที่ใช้รับค่าที่ผู้ใช้พิมพ์จากคีย์บอร์ด:', code:'string s = Console.___();', accept:['ReadLine']},
   {stage:3, type:'fill', text:'เติมโค้ดให้รับชื่อจากผู้ใช้:', code:'string name = Console.___();', accept:['ReadLine']},
   {stage:3, type:'fill', text:'Console.ReadLine() จะคืนค่าเป็นชนิดข้อมูลใดเสมอ:', accept:['string']},
-  {stage:3, type:'fill', text:'เติมโค้ดให้แปลงค่าที่รับมาเป็นตัวเลขจำนวนเต็ม:', code:'int num = Convert.ToInt32(Console.___());', accept:['ReadLine']},
-  {stage:3, type:'fill', text:'ต้องใช้ Convert.ToInt32() ร่วมกับ Console.ReadLine() เพราะ ReadLine() คืนค่าเป็นชนิดข้อมูลใดเสมอ (ไม่ใช่ตัวเลขโดยตรง):', accept:['string']},
+  {stage:3, type:'fill', text:'เติมคำสั่งที่ใช้แปลงข้อมูลชนิด string ให้เป็น int:', code:'int n = ___("123");', accept:['Convert.ToInt32']},
+  {stage:3, type:'fill', text:'นอกจากการใช้ Convert.ToInt32() ร่วมกับ Console.ReadLine() สามารถใช้ Methods ใดในการแปลงได้อีก', accept:['int.Parse(string)','int.TryParse(string, out int result);']},
 
   // ด่านที่ 4: Operators
   {stage:4, type:'fill', text:'เติมตัวดำเนินการที่ใช้หาเศษที่เหลือจากการหาร (modulus):', code:'int r = 10 ___ 3;', accept:['%']},
   {stage:4, type:'fill', text:'เติมผลลัพธ์ของโค้ดนี้:', code:'10 % 3 = ___', accept:['1']},
   {stage:4, type:'fill', text:'เติมตัวดำเนินการเปรียบเทียบ "เท่ากับ" ใน C#:', code:'if (a ___ b) { ... }', accept:['==']},
   {stage:4, type:'fill', text:'เติมตัวดำเนินการที่แทนความหมาย "และ" (AND) แบบตรรกะ:', code:'if (a > 0 ___ b > 0) { ... }', accept:['&&']},
-  {stage:4, type:'fill', text:'เติมผลลัพธ์ (true/false) ของเงื่อนไขนี้:', code:'7 > 5 && 3 > 5', accept:['false']},
+  {stage:4, type:'fill', text:'ผลลัพธ์ของเงื่อนไขนี้คืออะไร:', code:'7 > 5 && 3 > 5', accept:['false']},
 
   // ด่านที่ 5: Strings
   {stage:5, type:'fill', text:'เติมเครื่องหมายที่ใช้เชื่อมสตริงสองตัวเข้าด้วยกัน (concatenation):', code:'string full = first ___ last;', accept:['+']},
@@ -224,9 +224,9 @@ const QUESTIONS = [
   {stage:5, type:'fill', text:'เติม escape character ที่ใช้แสดงเครื่องหมายคำพูด (") ภายในสตริง:', code:'"She said \\___Hi\\___"', accept:['"','\\"']},
 
   // ด่านที่ 6: Boolean & If-Else
-  {stage:6, type:'fill', text:'ชนิดข้อมูล bool มีค่าที่เป็นไปได้กี่ค่า? (ตอบเป็นตัวเลข):', accept:['2']},
+  {stage:6, type:'fill', text:'ชนิดข้อมูล bool มีค่าอะไรบ้าง :', accept:['true,false']},
   {stage:6, type:'fill', text:'เติมคำสั่งให้โครงสร้างเงื่อนไขนี้สมบูรณ์:', code:'if (x > 0) { ... }\n___ (x < 0) { ... }\nelse { ... }', accept:['else if']},
-  {stage:6, type:'fill', text:'เติมคำตอบ: คำสั่ง else จะทำงานเมื่อเงื่อนไขก่อนหน้า ___ (ตอบว่า "จริง" หรือ "เท็จ"):', accept:['เท็จ']},
+  {stage:6, type:'fill', text:'คำสั่ง else จะทำงานเมื่อเงื่อนไขก่อนหน้าทั้งหมดเป็นค่าอะไร', accept:['เท็จ','false']},
   {stage:6, type:'fill', text:'เติมสัญลักษณ์ของ Ternary Operator:', code:'string result = (score >= 50) ___ "Pass" : "Fail";', accept:['?']},
   {stage:6, type:'fill', text:'เติมผลลัพธ์ที่โค้ดนี้จะพิมพ์ออกมา:', code:'int x = 5;\nif (x > 10) Console.WriteLine("A");\nelse if (x > 3) Console.WriteLine("B");\nelse Console.WriteLine("C");', accept:['B']},
 ];
