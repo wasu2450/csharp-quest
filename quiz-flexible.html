@@ -193,7 +193,7 @@ const QUESTIONS = [
   {stage:1, type:'fill', text:'เติมเครื่องหมายที่ต้องใช้ปิดท้ายทุกคำสั่งใน C#:', code:'Console.WriteLine("Hi")___', accept:[';']},
   {stage:1, type:'fill', text:'เติมสัญลักษณ์ที่ใช้ทำคอมเมนต์บรรทัดเดียว (single-line comment) ใน C#:', code:'___ this is a comment', accept:['//']},
   {stage:1, type:'fill', text:'C# เป็นภาษาที่ตัวพิมพ์เล็ก-ใหญ่มีผลต่อโค้ด เรียกว่าอะไร?', accept:['case-sensitive']},
-  {stage:1, type:'fill', text:'เติมคำสั่งให้ถูกต้อง เพื่อพิมพ์ข้อความออกทางหน้าจอ:', code:'_____.WriteLine("Hello World");', accept:['Console']},
+  {stage:1, type:'fill', text:'เติมคำสั่งให้ถูกต้อง เพื่อพิมพ์ข้อความออกทางหน้าจอ:', code:'_____("Hello World");', accept:['Console.WriteLine']},
 
   // ด่านที่ 2: Variables & Data Types
   {stage:2, type:'fill', text:'เติมคำสั่งประกาศตัวแปร:', code:'___ score = 10;', accept:['int']},
@@ -203,7 +203,7 @@ const QUESTIONS = [
   {stage:2, type:'fill', text:'เติมคำสั่งประกาศตัวแปร:', code:'___ myText = "Hello";', accept:['string']},
 
   // ด่านที่ 3: User Input
-  {stage:3, type:'fill', text:'เติมเมธอดที่ใช้รับค่าที่ผู้ใช้พิมพ์จากคีย์บอร์ด:', code:'string s = Console.___();', accept:['ReadLine']},
+  {stage:3, type:'fill', text:'เติมเมธอดที่ใช้รับค่าที่ผู้ใช้พิมพ์จากคีย์บอร์ด:', code:'string s = ___();', accept:['Console.ReadLine']},
   {stage:3, type:'fill', text:'เติมตัวดำเนินการที่แทนความหมาย "หรือ" (OR) แบบตรรกะ:', code:'if (a > 0 ___ b > 0) { ... }', accept:['||']},
   {stage:3, type:'fill', text:'Console.ReadLine() จะคืนค่าเป็นชนิดข้อมูลใดเสมอ:', accept:['string']},
   {stage:3, type:'fill', text:'เติมคำสั่งที่ใช้แปลงข้อมูลชนิด string ให้เป็น int:', code:'int n = ___("123");', accept:['Convert.ToInt32']},
@@ -211,7 +211,7 @@ const QUESTIONS = [
 
   // ด่านที่ 4: Operators
   {stage:4, type:'fill', text:'เติมตัวดำเนินการที่ใช้หาเศษที่เหลือจากการหาร (modulus):', code:'int r = 10 ___ 3;', accept:['%']},
-  {stage:4, type:'fill', text:'เติมผลลัพธ์ของโค้ดนี้:', code:'10 % 3 = ___', accept:['1']},
+  {stage:4, type:'fill', text:'เติมผลลัพธ์ของโค้ดนี้:', code:'17 % 4 = ___', accept:['1']},
   {stage:4, type:'fill', text:'เติมตัวดำเนินการเปรียบเทียบ "เท่ากับ" ใน C#:', code:'if (a ___ b) { ... }', accept:['==']},
   {stage:4, type:'fill', text:'เติมตัวดำเนินการที่แทนความหมาย "และ" (AND) แบบตรรกะ:', code:'if (a > 0 ___ b > 0) { ... }', accept:['&&']},
   {stage:4, type:'fill', text:'ผลลัพธ์ของเงื่อนไขนี้คืออะไร:', code:'7 > 5 && 3 > 5', accept:['false']},
@@ -219,7 +219,7 @@ const QUESTIONS = [
   // ด่านที่ 5: Strings
   {stage:5, type:'fill', text:'เติมเครื่องหมายที่ใช้เชื่อมสตริงสองตัวเข้าด้วยกัน (concatenation):', code:'string full = first ___ last;', accept:['+']},
   {stage:5, type:'fill', text:'เติมสัญลักษณ์ที่ต้องใส่หน้าข้อความเพื่อใช้ string interpolation:', code:'string name = "Ann";\nConsole.WriteLine(___"Hello {name}");', accept:['$']},
-  {stage:5, type:'fill', text:'\\n ในสตริงหมายถึงอะไร? (ตอบเป็นคำ เช่น "ขึ้นบรรทัดใหม่"):', accept:['ขึ้นบรรทัดใหม่']},
+  {stage:5, type:'fill', text:'ผลลัพธ์ของเงื่อนไขนี้คืออะไร:', code:'7 > 5 || 3 > 5', accept:['true']},
   {stage:5, type:'fill', text:'เติมคำสั่งที่ใช้หาความยาว (จำนวนตัวอักษร) ของสตริง:', code:'int len = myText.___;', accept:['Length']},
   {stage:5, type:'fill', text:'เติม escape character ที่ใช้แสดงเครื่องหมายคำพูด (") ภายในสตริง:', code:'"She said \\___Hi\\___"', accept:['"','\\"']},
 
@@ -228,7 +228,7 @@ const QUESTIONS = [
   {stage:6, type:'fill', text:'เติมคำสั่งให้โครงสร้างเงื่อนไขนี้สมบูรณ์:', code:'if (x > 0) { ... }\n___ (x < 0) { ... }\nelse { ... }', accept:['else if']},
   {stage:6, type:'fill', text:'คำสั่ง else จะทำงานเมื่อเงื่อนไขก่อนหน้าทั้งหมดเป็นค่าอะไร', accept:['เท็จ','false']},
   {stage:6, type:'fill', text:'เติมสัญลักษณ์ของ Ternary Operator:', code:'string result = (score >= 50) ___ "Pass" : "Fail";', accept:['?']},
-  {stage:6, type:'fill', text:'เติมผลลัพธ์ที่โค้ดนี้จะพิมพ์ออกมา:', code:'int x = 5;\nif (x > 10) Console.WriteLine("A");\nelse if (x > 3) Console.WriteLine("B");\nelse Console.WriteLine("C");', accept:['B']},
+  {stage:6, type:'fill', text:'เติมผลลัพธ์ที่โค้ดนี้จะพิมพ์ออกมา:', code:'int x = 5;\nif (x > 3) Console.WriteLine("A");\nelse if (x > 10) Console.WriteLine("B");\nelse Console.WriteLine("C");', accept:['B']},
 ];
 
 const STAGE_NAMES = {
