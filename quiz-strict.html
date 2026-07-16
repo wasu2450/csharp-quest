@@ -193,7 +193,7 @@ const QUESTIONS = [
   {stage:1, type:'fill', text:'เติมเครื่องหมายที่ต้องใช้ปิดท้ายทุกคำสั่งใน C#:', code:'Console.WriteLine("Hi")___', accept:[';']},
   {stage:1, type:'mc', text:'ข้อใดคือรูปแบบคอมเมนต์บรรทัดเดียว (single-line comment) ใน C#?', options:['// comment','<!-- comment -->','# comment','** comment **'], answer:'// comment'},
   {stage:1, type:'mc', text:'C# เป็นภาษาที่ตัวพิมพ์เล็ก-ใหญ่มีผลต่อโค้ดหรือไม่ (case-sensitive)?', options:['ไม่มีผล','มีผลเฉพาะชื่อคลาส','มีผล','มีผลเฉพาะตัวเลข'], answer:'มีผล'},
-  {stage:1, type:'fill', text:'เติมคำสั่งให้ถูกต้อง เพื่อพิมพ์ข้อความออกทางหน้าจอ:', code:'_____("Hello World");', accept:['Console.WriteLine']},
+  {stage:1, type:'fill', text:'เติมคำสั่งให้ถูกต้อง เพื่อพิมพ์ข้อความออกทางหน้าจอ:', code:'Console._____("Hello World");', accept:['WriteLine']},
 
   // ด่านที่ 2: Variables & Data Types
   {stage:2, type:'mc', text:'ชนิดข้อมูลใดใช้เก็บเลขจำนวนเต็ม?', options:['string','bool','char','int'], answer:'int'},
@@ -204,9 +204,9 @@ const QUESTIONS = [
 
   // ด่านที่ 3: User Input
   {stage:3, type:'mc', text:'เมธอดใดใช้รับค่าที่ผู้ใช้พิมพ์จากคีย์บอร์ด?', options:['Console.ReadLine()','Console.WriteLine()','Console.Input()','Console.Get()'], answer:'Console.ReadLine()'},
-  {stage:3, type:'fill', text:'เติมโค้ดให้รับชื่อจากผู้ใช้:', code:'string name = ___();', accept:['Console.ReadLine']},
+  {stage:3, type:'fill', text:'เติมโค้ดให้รับชื่อจากผู้ใช้:', code:'string name = Console.___();', accept:['ReadLine']},
   {stage:3, type:'mc', text:'Console.ReadLine() จะคืนค่าเป็นชนิดข้อมูลใดเสมอ?', options:['string','int','bool','double'], answer:'string'},
-  {stage:3, type:'fill', text:'เติมโค้ดให้แปลงค่าที่รับมาเป็นตัวเลขจำนวนเต็ม:', code:'int num = ________(Console.ReadLine());', accept:['Convert.ToInt32']},
+  {stage:3, type:'fill', text:'เติมโค้ดให้แปลงค่าที่รับมาเป็นตัวเลขจำนวนเต็ม:', code:'int num = Convert.ToInt32(______.ReadLine());', accept:['Console']},
   {stage:3, type:'mc', text:'เพราะเหตุใดจึงต้องใช้ Convert.ToInt32() ร่วมกับ Console.ReadLine() เมื่อต้องการตัวเลข?', options:['เพราะ ReadLine() คืนค่าเป็น int อยู่แล้ว','เพราะ ReadLine() คืนค่าเป็น string เสมอ','เพราะเป็นข้อบังคับทางไวยากรณ์เท่านั้น ไม่มีเหตุผล','เพราะทำให้โปรแกรมทำงานเร็วขึ้น'], answer:'เพราะ ReadLine() คืนค่าเป็น string เสมอ'},
 
   // ด่านที่ 4: Operators
