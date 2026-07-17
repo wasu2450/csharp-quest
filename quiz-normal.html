@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>C# Quest: ภารกิจ Syntax สู่ If-Else (โหมดเข้มงวด)</title>
+<title>C# Quest: ภารกิจ Syntax สู่ If-Else (โหมดพิมพ์คำตอบล้วน)</title>
 <style>
   :root{
     --bg-deep:#070B1A;
@@ -119,7 +119,7 @@
 <div class="wrap">
 
   <div class="title">🚀 C# QUEST</div>
-  <div class="subtitle">โหมดเข้มงวด (Strict) — ตัวพิมพ์เล็ก-ใหญ่มีผล — 30 ข้อ</div>
+  <div class="subtitle">โหมดพิมพ์คำตอบล้วน (Typing) — ทุกข้อพิมพ์คำตอบเอง, ตัวพิมพ์เล็ก-ใหญ่มีผล — 30 ข้อ</div>
   <a href="index.html" style="display:inline-block;color:var(--text-dim);font-size:.8rem;text-decoration:none;margin:-10px 0 16px;">← กลับหน้าเลือกด่าน</a>
 
   <!-- START SCREEN -->
@@ -189,46 +189,46 @@ for(let i=0;i<70;i++){
 // accept: array of acceptable answers (exact case, trimmed) for 'fill' — comparison is case-sensitive
 const QUESTIONS = [
   // ด่านที่ 1: Syntax & Comments
-  {stage:1, type:'mc', text:'โปรแกรม C# เริ่มทำงานที่เมธอดใดเป็นอันดับแรก?', options:['Start()','Main()','Begin()','Run()'], answer:'Main()'},
-  {stage:1, type:'fill', text:'เติมเครื่องหมายที่ต้องใช้ปิดท้ายทุกคำสั่งใน C#:', code:'Console.WriteLine("Hi")___', accept:[';']},
-  {stage:1, type:'mc', text:'ข้อใดคือรูปแบบคอมเมนต์บรรทัดเดียว (single-line comment) ใน C#?', options:['// comment','<!-- comment -->','# comment','** comment **'], answer:'// comment'},
-  {stage:1, type:'mc', text:'C# เป็นภาษาที่ตัวพิมพ์เล็ก-ใหญ่มีผลต่อโค้ดหรือไม่ (case-sensitive)?', options:['ไม่มีผล','มีผลเฉพาะชื่อคลาส','มีผล','มีผลเฉพาะตัวเลข'], answer:'มีผล'},
-  {stage:1, type:'fill', text:'เติมคำสั่งให้ถูกต้อง เพื่อพิมพ์ข้อความออกทางหน้าจอ:', code:'Console._____("Hello World");', accept:['WriteLine']},
+  {stage:1, type:'fill', text:'เขียนชื่อทั้งหมดของ Main เมธอดในโปรแกรม C# :', code:' ________ { ... }', accept:['public static void Main()']},
+  {stage:1, type:'fill', text:'เขียนคำสั่งให้ C# แสดงผลคำว่า Hi', code:'________', accept:['Console.WriteLine("Hi");']},
+  {stage:1, type:'fill', text:'เขียนคอมเมนต์คำว่า this is a comment แบบบรรทัดเดียว ใน C#:', code:'______', accept:['//this is a comment']},
+  {stage:1, type:'fill', text:'เขียนคำสั่งให้ C# แสดงผลลัพธ์ของ 6 + 9', accept:['Console.WriteLine(6 + 9);']},
+  {stage:1, type:'fill', text:'เขียนคำสั่งให้ C# แสดงค่าของตัวแปร name', code:'_____', accept:['Console.WriteLine(name);']},
 
   // ด่านที่ 2: Variables & Data Types
-  {stage:2, type:'mc', text:'ชนิดข้อมูลใดใช้เก็บเลขจำนวนเต็ม?', options:['string','bool','char','int'], answer:'int'},
-  {stage:2, type:'mc', text:'ชนิดข้อมูลใดใช้เก็บค่า true หรือ false?', options:['bool','int','double','string'], answer:'bool'},
-  {stage:2, type:'fill', text:'เติมคำสั่งประกาศตัวแปรชนิดจำนวนทศนิยม:', code:'___ age = 20;', accept:['double']},
-  {stage:2, type:'mc', text:'คำสั่งใดใช้ประกาศ "ค่าคงที่" ที่ห้ามเปลี่ยนแปลงค่าในภายหลัง?', options:['var','static','const','int'], answer:'const'},
-  {stage:2, type:'mc', text:'ข้อใดใช้แปลงข้อมูลชนิด string ให้เป็น int?', options:['Convert.ToString()','Convert.ToInt32()','int.Text()','string.Parse()'], answer:'Convert.ToInt32()'},
+  {stage:2, type:'fill', text:'เขียนคำสั่งประกาศตัวแปรชนิดจำนวนเต็มชื่อ num เก็บค่า 45', code:'_______', accept:['int num = 45;']},
+  {stage:2, type:'fill', text:'เขียนคำสั่งประกาศตัวแปรเก็บค่า จริง,เท็จ ชื่อ real เก็บค่า จริง', code:'_______', accept:['bool real = true;']},
+  {stage:2, type:'fill', text:'เขียนคำสั่งประกาศตัวแปรชนิดจำนวนทศนิยมชื่อ tos เก็บค่า 66.99', code:'_______', accept:['double tos = 66.99;']},
+  {stage:2, type:'fill', text:'เขียนคำสั่งประกาศตัวแปรชนิดตัวอักษรเดี่ยวชื่อ Word เก็บค่า I แบบค่าคงที่', code:'_______', accept:['const char Word = ''I'';']},
+  {stage:2, type:'fill', text:'เขียนคำสั่งประกาศตัวแปรชนิดตัวอักษรกลุ่มคำชื่อ MyWord เก็บค่า IT', code:'_______', accept:['string MyWord = "IT";']},
 
   // ด่านที่ 3: User Input
-  {stage:3, type:'mc', text:'เมธอดใดใช้รับค่าที่ผู้ใช้พิมพ์จากคีย์บอร์ด?', options:['Console.ReadLine()','Console.WriteLine()','Console.Input()','Console.Get()'], answer:'Console.ReadLine()'},
-  {stage:3, type:'fill', text:'เติมโค้ดให้รับชื่อจากผู้ใช้:', code:'string name = Console.___();', accept:['ReadLine']},
-  {stage:3, type:'mc', text:'Console.ReadLine() จะคืนค่าเป็นชนิดข้อมูลใดเสมอ?', options:['string','int','bool','double'], answer:'string'},
-  {stage:3, type:'fill', text:'เติมโค้ดให้แปลงค่าที่รับมาเป็นตัวเลขจำนวนเต็ม:', code:'int num = Convert.ToInt32(______.ReadLine());', accept:['Console']},
-  {stage:3, type:'mc', text:'เพราะเหตุใดจึงต้องใช้ Convert.ToInt32() ร่วมกับ Console.ReadLine() เมื่อต้องการตัวเลข?', options:['เพราะ ReadLine() คืนค่าเป็น int อยู่แล้ว','เพราะ ReadLine() คืนค่าเป็น string เสมอ','เพราะเป็นข้อบังคับทางไวยากรณ์เท่านั้น ไม่มีเหตุผล','เพราะทำให้โปรแกรมทำงานเร็วขึ้น'], answer:'เพราะ ReadLine() คืนค่าเป็น string เสมอ'},
+  {stage:3, type:'fill', text:'เขียนคำสั่งประกาศตัวแปรชนิดตัวอักษรกลุ่มคำชื่อ userinput เก็บค่าที่ผู้ใช้พิมพ์จากคีย์บอร์ด:', code:'_______', accept:['string userinput = Console.ReadLine();']},
+  {stage:3, type:'fill', text:'เขียนคำสั่ง if เพื่อเทียบค่าว่าตัวแปร num มากกว่า 25 หรือ num น้อยกว่า 23 หรือไม่ ', code:'if (a > 0 ___ b > 0) { ... }', accept:['if( num > 25 || num < 23 )']},
+  {stage:3, type:'fill', text:'Console.ReadLine() จะคืนค่าเป็นชนิดข้อมูลใดเสมอ:', accept:['string']},
+  {stage:3, type:'fill', text:'เติมคำสั่งที่ใช้แปลงข้อมูลชนิด string ให้เป็น int:', code:'int n = ___("123");', accept:['Convert.ToInt32']},
+  {stage:3, type:'fill', text:'นอกจากการใช้ Convert.ToInt32() ร่วมกับ Console.ReadLine() สามารถใช้ Methods ใดในการแปลงได้อีก', accept:['int.Parse(string)','int.TryParse(string, out int result);']},
 
   // ด่านที่ 4: Operators
-  {stage:4, type:'mc', text:'ตัวดำเนินการใดใช้หาเศษที่เหลือจากการหาร (modulus)?', options:['/','%','*','//'], answer:'%'},
-  {stage:4, type:'fill', text:'เติมผลลัพธ์ของโค้ดนี้:', code:'10 % 3 = ___', accept:['1']},
-  {stage:4, type:'mc', text:'ตัวดำเนินการเปรียบเทียบ "เท่ากับ" ใน C# คือข้อใด?', options:['=','===','equals','=='], answer:'=='},
-  {stage:4, type:'mc', text:'ตัวดำเนินการใดใช้แทนความหมาย "และ" (AND) แบบตรรกะ?', options:['&&','||','!','&'], answer:'&&'},
-  {stage:4, type:'fill', text:'เติมผลลัพธ์ (true/false) ของเงื่อนไขนี้:', code:'7 > 5 && 3 > 5', accept:['false']},
+  {stage:4, type:'fill', text:'เติมตัวดำเนินการที่ใช้หาเศษที่เหลือจากการหาร (modulus):', code:'int r = 10 ___ 3;', accept:['%']},
+  {stage:4, type:'fill', text:'เติมผลลัพธ์ของโค้ดนี้:', code:'17 % 4 = ___', accept:['1']},
+  {stage:4, type:'fill', text:'เติมตัวดำเนินการเปรียบเทียบ "เท่ากับ" ใน C#:', code:'if (a ___ b) { ... }', accept:['==']},
+  {stage:4, type:'fill', text:'เติมตัวดำเนินการที่แทนความหมาย "และ" (AND) แบบตรรกะ:', code:'if (a > 0 ___ b > 0) { ... }', accept:['&&']},
+  {stage:4, type:'fill', text:'ผลลัพธ์ของเงื่อนไขนี้คืออะไร:', code:'7 > 5 && 3 > 5', accept:['false']},
 
   // ด่านที่ 5: Strings
-  {stage:5, type:'mc', text:'เครื่องหมายใดใช้เชื่อมสตริงสองตัวเข้าด้วยกัน (concatenation)?', options:['-','+','&','%'], answer:'+'},
+  {stage:5, type:'fill', text:'เติมเครื่องหมายที่ใช้เชื่อมสตริงสองตัวเข้าด้วยกัน (concatenation):', code:'string full = first ___ last;', accept:['+']},
   {stage:5, type:'fill', text:'เติมสัญลักษณ์ที่ต้องใส่หน้าข้อความเพื่อใช้ string interpolation:', code:'string name = "Ann";\nConsole.WriteLine(___"Hello {name}");', accept:['$']},
-  {stage:5, type:'mc', text:'\\n ในสตริงหมายถึงอะไร?', options:['เว้นวรรค','แท็บ','เครื่องหมายคำพูด','ขึ้นบรรทัดใหม่'], answer:'ขึ้นบรรทัดใหม่'},
-  {stage:5, type:'mc', text:'ข้อใดใช้หาความยาว (จำนวนตัวอักษร) ของสตริง?', options:['.Length','.Count()','.Size','.Len()'], answer:'.Length'},
-  {stage:5, type:'fill', text:'หากต้องการแสดงคำว่า She said "Hi" ต้องใส่ Special Characters อะไรในช่องที่เว้นไว้', code:'"She said __Hi__"', accept:['\\"']},
+  {stage:5, type:'fill', text:'ผลลัพธ์ของเงื่อนไขนี้คืออะไร:', code:'7 > 5 || 3 > 5', accept:['true']},
+  {stage:5, type:'fill', text:'เติมคำสั่งที่ใช้หาความยาว (จำนวนตัวอักษร) ของสตริง:', code:'int len = myText.___;', accept:['Length']},
+  {stage:5, type:'fill', text:'เติม escape character ที่ใช้แสดงเครื่องหมายคำพูด (") ภายในสตริง:', code:'"She said \\___Hi\\___"', accept:['"','\\"']},
 
   // ด่านที่ 6: Boolean & If-Else
-  {stage:6, type:'mc', text:'ชนิดข้อมูล bool มีค่าที่เป็นไปได้กี่ค่า?', options:['1','2','3','ไม่จำกัด'], answer:'2'},
+  {stage:6, type:'fill', text:'ชนิดข้อมูล bool มีค่าอะไรบ้าง :', accept:['true,false']},
   {stage:6, type:'fill', text:'เติมคำสั่งให้โครงสร้างเงื่อนไขนี้สมบูรณ์:', code:'if (x > 0) { ... }\n___ (x < 0) { ... }\nelse { ... }', accept:['else if']},
-  {stage:6, type:'mc', text:'คำสั่ง else จะทำงานเมื่อใด?', options:['เมื่อเงื่อนไขก่อนหน้าทั้งหมดเป็นเท็จ','เมื่อเงื่อนไขก่อนหน้าเป็นจริง','ทำงานทุกครั้งเสมอ','ไม่เกี่ยวข้องกับเงื่อนไขก่อนหน้า'], answer:'เมื่อเงื่อนไขก่อนหน้าทั้งหมดเป็นเท็จ'},
+  {stage:6, type:'fill', text:'คำสั่ง else จะทำงานเมื่อเงื่อนไขก่อนหน้าทั้งหมดเป็นค่าอะไร', accept:['เท็จ','false']},
   {stage:6, type:'fill', text:'เติมสัญลักษณ์ของ Ternary Operator:', code:'string result = (score >= 50) ___ "Pass" : "Fail";', accept:['?']},
-  {stage:6, type:'mc', text:'โค้ดนี้จะพิมพ์ผลลัพธ์ใด?', code:'int x = 5;\nif (x > 10) Console.WriteLine("A");\nelse if (x > 3) Console.WriteLine("B");\nelse Console.WriteLine("C");', options:['A','B','C','ไม่มีผลลัพธ์'], answer:'B'},
+  {stage:6, type:'fill', text:'เติมผลลัพธ์ที่โค้ดนี้จะพิมพ์ออกมา:', code:'int x = 5;\nif (x > 3) Console.WriteLine("A");\nelse if (x > 10) Console.WriteLine("B");\nelse Console.WriteLine("C");', accept:['B']},
 ];
 
 const STAGE_NAMES = {
@@ -405,7 +405,7 @@ function submitToSheet(){
     score: String(score),
     total: String(QUESTIONS.length),
     percent: String(percent),
-    quizMode: 'strict',
+    quizMode: 'typing',
     timestamp: new Date().toISOString()
   });
   // ใช้ GET แทน POST เพราะ Apps Script exec URL จะ redirect (302) เสมอ
