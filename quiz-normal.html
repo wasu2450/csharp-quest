@@ -204,9 +204,10 @@ const QUESTIONS = [
 
   // ด่านที่ 3: User Input
   {stage:3, type:'fill', text:'เขียนคำสั่งประกาศตัวแปรชนิดตัวอักษรกลุ่มคำชื่อ userinput เก็บค่าที่ผู้ใช้พิมพ์จากคีย์บอร์ด:', code:'_______', accept:['string userinput = Console.ReadLine();']},
-  {stage:3, type:'fill', text:'เขียนคำสั่ง if เพื่อเทียบค่าว่าตัวแปร num มากกว่า 25 หรือ num น้อยกว่า 23 หรือไม่ ', code:'if (a > 0 ___ b > 0) { ... }', accept:['if( num > 25 || num < 23 )']},
-  {stage:3, type:'fill', text:'Console.ReadLine() จะคืนค่าเป็นชนิดข้อมูลใดเสมอ:', accept:['string']},
-  {stage:3, type:'fill', text:'เติมคำสั่งที่ใช้แปลงข้อมูลชนิด string ให้เป็น int:', code:'int n = ___("123");', accept:['Convert.ToInt32']},
+  {stage:3, type:'fill', text:'เขียนคำสั่ง if เพื่อเทียบค่าว่าตัวแปร num มากกว่า 25 หรือไม่ ', code:'_______ { ... }', accept:['if( num > 25 )']},
+  {stage:3, type:'fill', text:'เขียนคำสั่ง if เพื่อเทียบค่าว่าตัวแปร num เท่ากับ A หรือไม่ ', code:'_______ { ... }', accept:['if( num == ''A'' )']},
+  {stage:3, type:'fill', text:'เขียนคำสั่ง if เพื่อเทียบค่าว่าตัวแปร num มากกว่า 25 หรือ num น้อยกว่า 23 หรือไม่', code:'_______ { ... }', accept:['if( num > 25 || num < 23 )']},
+  {stage:3, type:'fill', text:'เขียนคำสั่ง if เพื่อเทียบค่าว่าตัวแปร num มากกว่า 30 และ num น้อยกว่า 100 หรือไม่', code:'_______ { ... }',w accept:['if( num > 30 && num < 100 )']},
   {stage:3, type:'fill', text:'นอกจากการใช้ Convert.ToInt32() ร่วมกับ Console.ReadLine() สามารถใช้ Methods ใดในการแปลงได้อีก', accept:['int.Parse(string)','int.TryParse(string, out int result);']},
 
   // ด่านที่ 4: Operators
