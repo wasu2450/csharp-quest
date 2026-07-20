@@ -199,26 +199,26 @@ const QUESTIONS = [
   {stage:2, type:'fill', text:'เขียนคำสั่งประกาศตัวแปรชนิดจำนวนเต็มชื่อ num เก็บค่า 45', code:'_______', accept:['int num = 45;']},
   {stage:2, type:'fill', text:'เขียนคำสั่งประกาศตัวแปรเก็บค่า จริง,เท็จ ชื่อ real เก็บค่า จริง', code:'_______', accept:['bool real = true;']},
   {stage:2, type:'fill', text:'เขียนคำสั่งประกาศตัวแปรชนิดจำนวนทศนิยมชื่อ tos เก็บค่า 66.99', code:'_______', accept:['double tos = 66.99;']},
-  {stage:2, type:'fill', text:'เขียนคำสั่งประกาศตัวแปรชนิดตัวอักษรเดี่ยวชื่อ Word เก็บค่า I แบบค่าคงที่', code:'_______', accept:['const char Word = ''I'';']},
+  {stage:2, type:'fill', text:'เขียนคำสั่งประกาศตัวแปรชนิดตัวอักษรเดี่ยวชื่อ Word เก็บค่า I แบบค่าคงที่', code:'_______', accept:['const char Word = \'I\';']},
   {stage:2, type:'fill', text:'เขียนคำสั่งประกาศตัวแปรชนิดตัวอักษรกลุ่มคำชื่อ MyWord เก็บค่า IT', code:'_______', accept:['string MyWord = "IT";']},
 
   // ด่านที่ 3: User Input
   {stage:3, type:'fill', text:'เขียนคำสั่งประกาศตัวแปรชนิดตัวอักษรกลุ่มคำชื่อ userinput เก็บค่าที่ผู้ใช้พิมพ์จากคีย์บอร์ด:', code:'_______', accept:['string userinput = Console.ReadLine();']},
   {stage:3, type:'fill', text:'เขียนคำสั่ง if เพื่อเทียบค่าว่าตัวแปร num มากกว่า 25 หรือไม่ ', code:'_______ { ... }', accept:['if( num > 25 )']},
-  {stage:3, type:'fill', text:'เขียนคำสั่ง if เพื่อเทียบค่าว่าตัวแปร num เท่ากับ A หรือไม่ ', code:'_______ { ... }', accept:['if( num == ''A'' )']},
+  {stage:3, type:'fill', text:'เขียนคำสั่ง if เพื่อเทียบค่าว่าตัวแปร num เท่ากับ A หรือไม่ ', code:'_______ { ... }', accept:['if( num == \'A\';)']},
   {stage:3, type:'fill', text:'เขียนคำสั่ง if เพื่อเทียบค่าว่าตัวแปร num มากกว่า 25 หรือ num น้อยกว่า 23 หรือไม่', code:'_______ { ... }', accept:['if( num > 25 || num < 23 )']},
-  {stage:3, type:'fill', text:'เขียนคำสั่ง if เพื่อเทียบค่าว่าตัวแปร num มากกว่า 30 และ num น้อยกว่า 100 หรือไม่', code:'_______ { ... }',w accept:['if( num > 30 && num < 100 )']},
-  {stage:3, type:'fill', text:'นอกจากการใช้ Convert.ToInt32() ร่วมกับ Console.ReadLine() สามารถใช้ Methods ใดในการแปลงได้อีก', accept:['int.Parse(string)','int.TryParse(string, out int result);']},
+  {stage:3, type:'fill', text:'เขียนคำสั่ง if เพื่อเทียบค่าว่าตัวแปร num มากกว่า 30 และ num น้อยกว่า 100 หรือไม่', code:'_______ { ... }', accept:['if( num > 30 && num < 100 )']},
+  
 
   // ด่านที่ 4: Operators
-  {stage:4, type:'fill', text:'เติมตัวดำเนินการที่ใช้หาเศษที่เหลือจากการหาร (modulus):', code:'int r = 10 ___ 3;', accept:['%']},
-  {stage:4, type:'fill', text:'เติมผลลัพธ์ของโค้ดนี้:', code:'17 % 4 = ___', accept:['1']},
-  {stage:4, type:'fill', text:'เติมตัวดำเนินการเปรียบเทียบ "เท่ากับ" ใน C#:', code:'if (a ___ b) { ... }', accept:['==']},
-  {stage:4, type:'fill', text:'เติมตัวดำเนินการที่แทนความหมาย "และ" (AND) แบบตรรกะ:', code:'if (a > 0 ___ b > 0) { ... }', accept:['&&']},
-  {stage:4, type:'fill', text:'ผลลัพธ์ของเงื่อนไขนี้คืออะไร:', code:'7 > 5 && 3 > 5', accept:['false']},
+  {stage:4, type:'fill', text:'เขียนคำสั่งประกาศตัวแปรชนิดจำนวนเต็มชื่อ mod เพื่อเก็บค่าที่เหลือจากการหาร (modulus) ของ 11 และ 3:', code:'_______', accept:['int mod = 11 % 3;']},
+  {stage:4, type:'fill', text:'เขียนคำสั่งแปลงค่าที่รับจากผู้ใช้ให้เป็นตัวเลขจำนวนเต็ม (หากใช้ TryParse ให้เก็บค่าไว้ในตัวแปล result)', accept:['int.Parse(Console.ReadLine());','int.TryParse(Console.ReadLine(), out int result);','Convert.ToInt32(Console.ReadLine());']},
+  {stage:4, type:'fill', text:'เขียนคำสั่งเพิ่มค่าตัวแปรชนิดจำนวนเต็มชื่อ num โดยให้เพิ่มทีละ 1', code:'_______', accept:['int num ++;','int num += 1;']},
+  {stage:4, type:'fill', text:'เขียนคำสั่งลดค่าตัวแปรชนิดจำนวนเต็มชื่อ num โดยให้ลดทีละ 3', code:'_______', accept:['int num -= 5;']},
+  {stage:4, type:'fill', text:'เขียนคำสั่งเพิ่มค่าตัวแปรชนิดจำนวนเต็มชื่อ num โดยให้เพิ่มทีละ 5', code:'_______', accept:['int num += 5;']},
 
   // ด่านที่ 5: Strings
-  {stage:5, type:'fill', text:'เติมเครื่องหมายที่ใช้เชื่อมสตริงสองตัวเข้าด้วยกัน (concatenation):', code:'string full = first ___ last;', accept:['+']},
+  {stage:5, type:'fill', text:'เขียนคำสั่งประกาศตัวแปรชนิดตัวอักษรกลุ่มคำชื่อ full เก็บค่าจากตัวแปรชนิดตัวอักษรกลุ่มคำชื่อ first และตัวแปรชนิดตัวอักษรกลุ่มคำชื่อ last ', code:'_______', accept:['string full = first + last;']},
   {stage:5, type:'fill', text:'เติมสัญลักษณ์ที่ต้องใส่หน้าข้อความเพื่อใช้ string interpolation:', code:'string name = "Ann";\nConsole.WriteLine(___"Hello {name}");', accept:['$']},
   {stage:5, type:'fill', text:'ผลลัพธ์ของเงื่อนไขนี้คืออะไร:', code:'7 > 5 || 3 > 5', accept:['true']},
   {stage:5, type:'fill', text:'เติมคำสั่งที่ใช้หาความยาว (จำนวนตัวอักษร) ของสตริง:', code:'int len = myText.___;', accept:['Length']},
