@@ -190,10 +190,10 @@ for(let i=0;i<70;i++){
 const QUESTIONS = [
   // ด่านที่ 1: Syntax & Comments
   {stage:1, type:'fill', text:'เขียนชื่อทั้งหมดของ Main เมธอดในโปรแกรม C# :', code:' ________ { ... }', accept:['public static void Main()']},
-  {stage:1, type:'fill', text:'เขียนคำสั่งให้ C# แสดงผลคำว่า Hi', code:'________', accept:['Console.WriteLine("Hi");']},
+  {stage:1, type:'fill', text:'เขียนคำสั่งให้ C# แสดงผลแบบเว้นบรรทัดคำว่า Hi', code:'________', accept:['Console.WriteLine("Hi");']},
   {stage:1, type:'fill', text:'เขียนคอมเมนต์คำว่า this is a comment แบบบรรทัดเดียว ใน C#:', code:'______', accept:['//this is a comment']},
-  {stage:1, type:'fill', text:'เขียนคำสั่งให้ C# แสดงผลลัพธ์ของ 6 + 9', accept:['Console.WriteLine(6 + 9);']},
-  {stage:1, type:'fill', text:'เขียนคำสั่งให้ C# แสดงค่าของตัวแปร name', code:'_____', accept:['Console.WriteLine(name);']},
+  {stage:1, type:'fill', text:'เขียนคำสั่งให้ C# แสดงผลลัพธ์แบบเว้นบรรทัดของ 6 + 9', accept:['Console.WriteLine(6 + 9);']},
+  {stage:1, type:'fill', text:'เขียนคำสั่งให้ C# แสดงค่าแบบเว้นบรรทัดของตัวแปร name', code:'_____', accept:['Console.WriteLine(name);']},
 
   // ด่านที่ 2: Variables & Data Types
   {stage:2, type:'fill', text:'เขียนคำสั่งประกาศตัวแปรชนิดจำนวนเต็มชื่อ num เก็บค่า 45', code:'_______', accept:['int num = 45;']},
@@ -203,7 +203,7 @@ const QUESTIONS = [
   {stage:2, type:'fill', text:'เขียนคำสั่งประกาศตัวแปรชนิดตัวอักษรกลุ่มคำชื่อ MyWord เก็บค่า IT', code:'_______', accept:['string MyWord = "IT";']},
 
   // ด่านที่ 3: User Input
-  {stage:3, type:'fill', text:'เขียนคำสั่งประกาศตัวแปรชนิดตัวอักษรกลุ่มคำชื่อ userinput เก็บค่าที่ผู้ใช้พิมพ์จากคีย์บอร์ด:', code:'_______', accept:['string userinput = Console.ReadLine();']},
+  {stage:3, type:'fill', text:'เขียนคำสั่งประกาศตัวแปรชนิดตัวอักษรกลุ่มคำชื่อ userinput เพื่อเก็บค่าที่ผู้ใช้พิมพ์จากคีย์บอร์ด:', code:'_______', accept:['string userinput = Console.ReadLine();']},
   {stage:3, type:'fill', text:'เขียนคำสั่ง if เพื่อเทียบค่าว่าตัวแปร num มากกว่า 25 หรือไม่ ', code:'_______ { ... }', accept:['if( num > 25 )']},
   {stage:3, type:'fill', text:'เขียนคำสั่ง if เพื่อเทียบค่าว่าตัวแปร num เท่ากับ A หรือไม่ ', code:'_______ { ... }', accept:['if( num == \'A\';)']},
   {stage:3, type:'fill', text:'เขียนคำสั่ง if เพื่อเทียบค่าว่าตัวแปร num มากกว่า 25 หรือ num น้อยกว่า 23 หรือไม่', code:'_______ { ... }', accept:['if( num > 25 || num < 23 )']},
@@ -219,9 +219,9 @@ const QUESTIONS = [
 
   // ด่านที่ 5: Strings
   {stage:5, type:'fill', text:'เขียนคำสั่งประกาศตัวแปรชนิดตัวอักษรกลุ่มคำชื่อ full เก็บค่าจากตัวแปรชนิดตัวอักษรกลุ่มคำชื่อ first และตัวแปรชนิดตัวอักษรกลุ่มคำชื่อ last ', code:'_______', accept:['string full = first + last;']},
-  {stage:5, type:'fill', text:'เติมสัญลักษณ์ที่ต้องใส่หน้าข้อความเพื่อใช้ string interpolation:', code:'string name = "Ann";\nConsole.WriteLine(___"Hello {name}");', accept:['$']},
-  {stage:5, type:'fill', text:'ผลลัพธ์ของเงื่อนไขนี้คืออะไร:', code:'7 > 5 || 3 > 5', accept:['true']},
-  {stage:5, type:'fill', text:'เติมคำสั่งที่ใช้หาความยาว (จำนวนตัวอักษร) ของสตริง:', code:'int len = myText.___;', accept:['Length']},
+  {stage:5, type:'fill', text:'เขียนคำสั่งให้ C# แสดงผลแบบเว้นบรรทัด แสดงคำว่า Hello Ann โดยการใช้ string interpolation', code:'string name = "Ann";\n_______', accept:['Console.WriteLine($"Hello {name}");']},
+  {stage:5, type:'fill', text:'เขียนคำสั่งให้ C# แสดงผลค่าที่ผู้ใช้ส่งเข้ามาแบบเว้นบรรทัด', code:'string userinput = Console.ReadLine();\n_______', accept:['Console.WriteLine(userinput);']},
+  {stage:5, type:'fill', text:'เขียนคำสั่งให้ C# หาจำนวนตัวอักษรของตัวแปร MyWord และเก็บไว้ในตัวแปรชนิดจำนวนเต็มชื่อ len', code:'_______', accept:['int len = MyWord.Length;']},
   {stage:5, type:'fill', text:'เติม escape character ที่ใช้แสดงเครื่องหมายคำพูด (") ภายในสตริง:', code:'"She said \\___Hi\\___"', accept:['"','\\"']},
 
   // ด่านที่ 6: Boolean & If-Else
