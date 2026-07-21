@@ -213,9 +213,9 @@ const QUESTIONS = [
   // ด่านที่ 4: Operators
   {stage:4, type:'fill', text:'เขียนคำสั่งประกาศตัวแปรชนิดจำนวนเต็มชื่อ mod เพื่อเก็บค่าที่เหลือจากการหาร (modulus) ของ 11 และ 3:', code:'_______', accept:['int mod = 11 % 3;']},
   {stage:4, type:'fill', text:'เขียนคำสั่งแปลงค่าที่รับจากผู้ใช้ให้เป็นตัวเลขจำนวนเต็ม (หากใช้ TryParse ให้เก็บค่าไว้ในตัวแปล result)', accept:['int.Parse(Console.ReadLine());','int.TryParse(Console.ReadLine(), out int result);','Convert.ToInt32(Console.ReadLine());']},
-  {stage:4, type:'fill', text:'เขียนคำสั่งเพิ่มค่าตัวแปรชนิดจำนวนเต็มชื่อ num โดยให้เพิ่มทีละ 1', code:'_______', accept:['int num ++;','int num += 1;']},
-  {stage:4, type:'fill', text:'เขียนคำสั่งลดค่าตัวแปรชนิดจำนวนเต็มชื่อ num โดยให้ลดทีละ 3', code:'_______', accept:['int num -= 5;']},
-  {stage:4, type:'fill', text:'เขียนคำสั่งเพิ่มค่าตัวแปรชนิดจำนวนเต็มชื่อ num โดยให้เพิ่มทีละ 5', code:'_______', accept:['int num += 5;']},
+  {stage:4, type:'fill', text:'เขียนคำสั่งเพิ่มค่าตัวแปรชนิดจำนวนเต็มชื่อ num โดยให้เพิ่ม 1', code:'_______', accept:['int num ++;','int num += 1;']},
+  {stage:4, type:'fill', text:'เขียนคำสั่งลดค่าตัวแปรชนิดจำนวนเต็มชื่อ num โดยให้ลด 3', code:'_______', accept:['int num -= 3;']},
+  {stage:4, type:'fill', text:'เขียนคำสั่งเพิ่มค่าตัวแปรชนิดจำนวนเต็มชื่อ num โดยให้เพิ่ม 5', code:'_______', accept:['int num += 5;']},
 
   // ด่านที่ 5: Strings
   {stage:5, type:'fill', text:'เขียนคำสั่งประกาศตัวแปรชนิดตัวอักษรกลุ่มคำชื่อ full เก็บค่าจากตัวแปรชนิดตัวอักษรกลุ่มคำชื่อ first และตัวแปรชนิดตัวอักษรกลุ่มคำชื่อ last ', code:'_______', accept:['string full = first + last;']},
@@ -225,7 +225,7 @@ const QUESTIONS = [
   {stage:5, type:'fill', text:'เขียนคำสั่งให้ C# แสดงผลแบบไม่เว้นบรรทัด แสดงคำว่า She said "Hi"', code:'"_______"', accept:['Console.Write("She said \\"Hi\\"");']},
 
   // ด่านที่ 6: Boolean & If-Else
-  {stage:6, type:'fill', text:'หากต้องการเขียนคำสั่งให้ C# ตรวจสอบเเงื่อนไขว่าถูกต้องหรือไม่ต้องใช้ฟังชั่นอะไร', code:'_______', accept:['if else']}, 
+  {stage:6, type:'fill', text:'หากต้องการเขียนคำสั่งให้ C# ตรวจสอบเงื่อนไขว่าถูกต้องหรือไม่ใช้ฟังชั่นอะไร', code:'_______', accept:['if else']}, 
   {stage:6, type:'fill', text:'หากต้องการเขียนคำสั่งให้ C# ตรวจสอบเเงื่อนไขมากกว่าหนึ่งเงื่อนไขต้องเพิ่มฟังชั่นอะไรเข้าไประหว่าง if else', accept:['else if']},
   {stage:6, type:'fill', text:'หาไม่มีเงื่อนไขใดๆถูกเลย if else จะไปทำที่ฟังชั่นใด', accept:['else']},
   {stage:6, type:'fill', text:'เขียนคำสั่งให้ C# แสดงผลแบบไม่เว้นบรรทัด แสดงคำว่า that right โดยใช้ if else และให้เงื่อนไขถูกต้องในการเช็คครั้งแรก', code:'int x = 5;\nint y = 6;\n_______', accept:['if( y > x ) Console.Write("that right");']},
