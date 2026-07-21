@@ -189,7 +189,7 @@ for(let i=0;i<70;i++){
 // accept: array of acceptable answers (exact case, trimmed) for 'fill' — comparison is case-sensitive
 const QUESTIONS = [
   // ด่านที่ 1: Syntax & Comments
-  {stage:1, type:'fill', text:'เติมชื่อเมธอดที่โปรแกรม C# เริ่มทำงานเป็นอันดับแรก:', code:'static void ___() { ... }', accept:['Main']},
+  {stage:1, type:'fill', text:'เติมชื่อเมธอดที่โปรแกรม C# เริ่มทำงานเป็นอันดับแรก:', code:'public static void ___() { ... }', accept:['Main']},
   {stage:1, type:'fill', text:'เติมเครื่องหมายที่ต้องใช้ปิดท้ายทุกคำสั่งใน C#:', code:'Console.WriteLine("Hi")___', accept:[';']},
   {stage:1, type:'fill', text:'เติมสัญลักษณ์ที่ใช้ทำคอมเมนต์บรรทัดเดียว (single-line comment) ใน C#:', code:'___ this is a comment', accept:['//']},
   {stage:1, type:'fill', text:'C# เป็นภาษาที่ตัวพิมพ์เล็ก-ใหญ่มีผลต่อโค้ด เรียกว่าอะไร?', accept:['case-sensitive']},
