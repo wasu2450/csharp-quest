@@ -222,10 +222,10 @@ const QUESTIONS = [
   {stage:5, type:'fill', text:'เขียนคำสั่งให้ C# แสดงผลแบบเว้นบรรทัด แสดงคำว่า Hello Ann โดยการใช้ string interpolation', code:'string name = "Ann";\n_______', accept:['Console.WriteLine($"Hello {name}");']},
   {stage:5, type:'fill', text:'เขียนคำสั่งให้ C# แสดงผลค่าที่ผู้ใช้ส่งเข้ามาแบบเว้นบรรทัด', code:'string userinput = Console.ReadLine();\n_______', accept:['Console.WriteLine(userinput);']},
   {stage:5, type:'fill', text:'เขียนคำสั่งให้ C# หาจำนวนตัวอักษรของตัวแปร MyWord และเก็บไว้ในตัวแปรชนิดจำนวนเต็มชื่อ len', code:'_______', accept:['int len = MyWord.Length;']},
-  {stage:5, type:'fill', text:'เติม escape character ที่ใช้แสดงเครื่องหมายคำพูด (") ภายในสตริง:', code:'"She said \\___Hi\\___"', accept:['"','\\"']},
+  {stage:5, type:'fill', text:'เขียนคำสั่งให้ C# แสดงผลแบบเว้นบรรทัด แสดงคำว่า She said "Hi"', code:'"_______"', accept:['Console.WriteLine("She said \\"Hi\\"");']},
 
   // ด่านที่ 6: Boolean & If-Else
-  {stage:6, type:'fill', text:'ชนิดข้อมูล bool มีค่าอะไรบ้าง :', accept:['true,false']},
+  {stage:6, type:'fill', text:'เขียนคำสั่งให้ C# แสดงผลแบบไม่เว้นบรรทัด แสดงคำว่า She said "Hi"', accept:['int x = 5;\nint x = 5;\nif (x > 3) Console.WriteLine("A");']},
   {stage:6, type:'fill', text:'เติมคำสั่งให้โครงสร้างเงื่อนไขนี้สมบูรณ์:', code:'if (x > 0) { ... }\n___ (x < 0) { ... }\nelse { ... }', accept:['else if']},
   {stage:6, type:'fill', text:'คำสั่ง else จะทำงานเมื่อเงื่อนไขก่อนหน้าทั้งหมดเป็นค่าอะไร', accept:['เท็จ','false']},
   {stage:6, type:'fill', text:'เติมสัญลักษณ์ของ Ternary Operator:', code:'string result = (score >= 50) ___ "Pass" : "Fail";', accept:['?']},
